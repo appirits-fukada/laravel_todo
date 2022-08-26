@@ -1,0 +1,36 @@
+<?php
+
+namespace Tests\Feature;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
+
+class TaskControllerTest extends TestCase
+{
+    /** @test */
+    public function タスク一覧にアクセスして画面が表示される()
+    {
+        $response = $this->get(action('TaskController@index'));
+        $response->assertStatus(200);
+    }
+
+    /** @test */
+    public function タスク一覧にアクセスしてタスク一覧画面が表示される()
+    {
+        $response = $this->get(action('TaskController@index'));
+        $response->assertViewIs('layouts.index');
+    }
+
+    /** @test */
+    public function タスク一覧にアクセスしてタスクが全件表示される()
+    {
+        // テスト用のデータを作成
+        Task::factory()->count(30)->create();
+
+        // 作成したデータが全件表示されていること
+        $response = $this->get(action('TaskController@index'));
+        $task = $response->original['tasks'];
+        $this->assertEquals(30, count($tasks));
+    }
+}
