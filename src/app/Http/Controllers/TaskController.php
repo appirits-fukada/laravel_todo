@@ -14,4 +14,38 @@ class TaskController extends Controller
             'tasks' => $tasks,
         ]);
     }
+
+    public function create()
+    {
+        //
+    }
+
+    public function store()
+    {
+        //
+    }
+
+    /** */
+    public function show($id)
+    {
+        $task = Task::find($id);
+        return view('tasks.show', [
+            'task' => $task,
+        ]);
+    }
+
+    public function edit()
+    {
+        //
+    }
+
+    public function update()
+    {
+        //
+    }
+
+    public function destroy()
+    {
+        //
+    }
 }
