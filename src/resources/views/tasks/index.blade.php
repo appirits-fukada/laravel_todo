@@ -10,7 +10,7 @@
             @foreach($tasks as $task)
                 <tr>
                     <td>{{ $task->title }}</td>
-                    <td><a href="#">詳細</a></td>
+                    <td><a href="{{ route('tasks.show', ['task' => $task->id]) }}">詳細</a></td>
                     <td><a href="#">編集</a></td>
                     <td><a href="#">削除</a></td>
                 </tr>
