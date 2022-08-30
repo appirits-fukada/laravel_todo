@@ -19,7 +19,7 @@
     </table>
     <hr>
     <menu label="リンク">
-        <a href="#">タスクの新規作成</a><br>
+        <a href="{{ route('tasks.create') }}">タスクの新規作成</a><br>
         <a href="#">ログアウト</a>
     </menu>
 @endsection
