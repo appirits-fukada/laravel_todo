@@ -7,7 +7,7 @@
         <h3>タスク詳細:</h3>
         <h5>{{ $task->content }}</h5>
     <hr>
-    <a href="#">タスクを編集する</a><br>
+    <a href="{{ route('tasks.edit', $task->id) }}">タスクを編集する</a><br>
     <a href="#" onclick="return confirm('タスクを削除します(削除したら戻せません)。\nよろしいですか＞');">タスクを削除する</a><br>
     <hr>
     <menu label="リンク">
