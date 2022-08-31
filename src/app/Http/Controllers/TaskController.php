@@ -58,8 +58,9 @@ class TaskController extends Controller
         return redirect()->route('tasks.show', ['task' => $id])->with('success', 'タスクを編集しました。');
     }
 
-    public function destroy()
+    public function destroy($id)
     {
-        //
+        Task::where('id', $id)->delete();
+        return redirect()->route('tasks.index')->with('success', 'タスクを削除しました。');
     }
 }

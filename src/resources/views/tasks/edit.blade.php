@@ -1,7 +1,7 @@
 @extends('layout.application')
 
 @section('content')
-    <h1>タスクの登録</h1>
+    <h1>タスクの編集</h1>
     <!--TODO メッセージはパーシャルにする -->
     @if ($errors->any())
         <ul>
