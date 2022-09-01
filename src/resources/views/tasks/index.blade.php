@@ -26,6 +26,14 @@
     <hr>
     <menu label="リンク">
         <a href="{{ route('tasks.create') }}">タスクの新規作成</a><br>
-        <a href="#">ログアウト</a>
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+
+            <x-responsive-nav-link :href="route('logout')"
+                    onclick="event.preventDefault();
+                                this.closest('form').submit();">
+                {{ __('ログアウト') }}
+            </x-responsive-nav-link>
+        </form>
     </menu>
 @endsection
