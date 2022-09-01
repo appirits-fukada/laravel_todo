@@ -1,4 +1,4 @@
-@extends('layout.application')
+@extends('layouts.application')
 
 @section('content')
     <h1>タスクの詳細</h1>
