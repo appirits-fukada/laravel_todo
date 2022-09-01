@@ -1,4 +1,4 @@
-@extends('layout.application')
+@extends('layouts.application')
 
 @section('content')
     <h1>タスクの編集</h1>
@@ -14,7 +14,7 @@
         @csrf
         @method('PUT')
         タスク名:<input type="string" name="title" value="{{ $task->title }}"><br>
-        タスク詳細:<input type="string" name="content" value="{{ $task->content }}"><br>
+        タスク詳細:<input type="text" name="content" value="{{ $task->content }}"><br>
         <button>タスクを編集する</button>
     </form>
     <hr>
