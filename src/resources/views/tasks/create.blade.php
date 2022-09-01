@@ -1,4 +1,4 @@
-@extends('layout.application')
+@extends('layouts.application')
 
 @section('content')
     <h1>タスクの登録</h1>
