@@ -1,6 +1,4 @@
-@extends('layouts.application')
-
-@section('content')
+<x-app-layout>
     <h1>タスクの登録</h1>
     <!--TODO メッセージはパーシャルにする -->
     @if ($errors->any())
@@ -19,6 +17,14 @@
     <hr>
     <menu label="リンク">
         <a href="{{ route('tasks.index') }}">一覧画面に戻る</a><br>
-        <a href="#">ログアウト</a><br>
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+
+            <x-responsive-nav-link :href="route('logout')"
+                    onclick="event.preventDefault();
+                                this.closest('form').submit();">
+                {{ __('ログアウト') }}
+            </x-responsive-nav-link>
+        </form>
     </menu>
-@endsection
+</x-app-layout>
