@@ -1,6 +1,4 @@
-@extends('layouts.application')
-
-@section('content')
+<x-app-layout>
     <h1>タスク一覧</h1>
     <table border="1">
         <tr>
@@ -36,4 +34,4 @@
             </x-responsive-nav-link>
         </form>
     </menu>
-@endsection
+</x-app-layout>

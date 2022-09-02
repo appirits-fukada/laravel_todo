@@ -17,13 +17,13 @@ class TaskTableSeeder extends Seeder
     public function run()
     {
         // 動作確認用のデータを作成
-        for ($i = 0; $i < 100; $i++) {
-            DB::table('tasks')->insert([
-                'title' => "title$i",
-                'content' => "content$i",
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ]);
-        }
+        // for ($i = 0; $i < 100; $i++) {
+        //     DB::table('tasks')->insert([
+        //         'title' => "title$i",
+        //         'content' => "content$i",
+        //         'created_at' => Carbon::now(),
+        //         'updated_at' => Carbon::now(),
+        //     ]);
+        // }
     }
 }

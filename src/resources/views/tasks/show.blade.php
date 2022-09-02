@@ -1,6 +1,4 @@
-@extends('layouts.application')
-
-@section('content')
+<x-app-layout>
     <h1>タスクの詳細</h1>
         <h3>タスク名:</h3>
         <h5>{{ $task->title }}</h5>
@@ -26,4 +24,4 @@
             </x-responsive-nav-link>
         </form>
     </menu>
-@endsection
+</x-app-layout>

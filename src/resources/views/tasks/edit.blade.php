@@ -1,6 +1,4 @@
-@extends('layouts.application')
-
-@section('content')
+<x-app-layout>
     <h1>タスクの編集</h1>
     <!--TODO メッセージはパーシャルにする -->
     @if ($errors->any())
@@ -31,4 +29,4 @@
             </x-responsive-nav-link>
         </form>
     </menu>
-@endsection
+</x-app-layout>
