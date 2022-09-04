@@ -1,5 +1,10 @@
 <x-app-layout>
-    <h1>タスクの編集</h1>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('タスクの編集') }}
+        </h2>
+    </x-slot>
+
     <!--TODO メッセージはパーシャルにする -->
     @if ($errors->any())
         <ul>
@@ -9,24 +14,25 @@
         </ul>
     @endif
     <form action="{{ route('tasks.update', $task->id) }}" method="POST">
-        @csrf
-        @method('PUT')
-        タスク名:<input type="string" name="title" value="{{ $task->title }}"><br>
-        タスク詳細:<input type="text" name="content" value="{{ $task->content }}"><br>
-        <button>タスクを編集する</button>
+    @csrf
+    @method('PUT')
+        <label class="block py-4">
+            <span class="text-gray-700">タスク名</span>
+            <input
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                type="string" name="title" value="{{ $task->title }}"></input>
+        </label>
+        <label class="block py-4">
+            <span class="text-gray-700">タスク詳細</span>
+            <textarea
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                rows="3" type="text" name="content">{{ $task->content }}</textarea>
+        </label>
+        <input type="submit" name="" value="タスクを編集する"
+                class="items-center px-4 py-2 bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white border border-blue-500 hover:border-transparent rounded">
     </form>
-    <hr>
-    <menu label="リンク">
-        <a href="{{ route('tasks.show', ['task' => $task->id]) }}">詳細画面に戻る</a><br>
-        <a href="{{ route('tasks.index') }}">一覧画面に戻る</a><br>
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-
-            <x-responsive-nav-link :href="route('logout')"
-                    onclick="event.preventDefault();
-                                this.closest('form').submit();">
-                {{ __('ログアウト') }}
-            </x-responsive-nav-link>
-        </form>
+    <hr class="py-4">
+    <menu class="py-4" label="リンク">
+        <a class="px-4" href="{{ route('tasks.index') }}">一覧画面に戻る</a><br>
     </menu>
 </x-app-layout>
