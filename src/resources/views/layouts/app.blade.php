@@ -18,17 +18,30 @@
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
 
-            <!-- Page Heading
+            <!-- Page Heading -->
             <header class="bg-white shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    $header
+                    {{ $header }}
                 </div>
             </header>
-            -->
+
+            <!-- Messages -->
+            @if (session('success'))
+                <div class="alert alert-success text-center pt-4">
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if (session('error'))
+                <div class="alert alert-error text-center pt-4">
+                    {{ session('error') }}
+                </div>
+            @endif
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+                <div class="max-w-7xl mx-auto">
+                    {{ $slot }}
+                </div>
             </main>
         </div>
     </body>

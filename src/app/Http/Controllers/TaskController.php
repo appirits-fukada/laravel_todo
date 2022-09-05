@@ -42,26 +42,26 @@ class TaskController extends Controller
     /** */
     public function show($id)
     {
-        // user_idがAuth::id()と一致しない場合は弾く
+        // 本人のタスク以外にアクセスしようとした場合は弾く
         $task = Task::find($id);
-        if($task->use_id == Auth::id()) {
+        if($task->user_id == Auth::id()) {
             return view('tasks.show', [
                 'task' => $task,
             ]);
         } else {
-            return redirect()->route('tasks.index');
+            return redirect()->route('tasks.index')->with('error', '別ユーザーのタスクです。');
         }
     }
 
     public function edit($id)
     {
         $task = Task::find($id);
-        if($task->use_id == Auth::id()) {
+        if($task->user_id == Auth::id()) {
             return view('tasks.edit', [
                 'task' => $task,
             ]);
         } else {
-            return redirect()->route('tasks.index');
+            return redirect()->route('tasks.index')->with('error', '別ユーザーのタスクです。');
         }
     }
 
@@ -71,23 +71,23 @@ class TaskController extends Controller
             'title' => $request->title,
             'content'=> $request->content,
         ];
-        $task = Task::where('id', $id);
-        if($task->use_id == Auth::id()) {
+        $task = Task::find($id);
+        if($task->user_id == Auth::id()) {
             $task->update($update);
             return redirect()->route('tasks.show', ['task' => $id])->with('success', 'タスクを編集しました。');
         } else {
-            return redirect()->route('tasks.index');
+            return redirect()->route('tasks.index')->with('error', '別ユーザーのタスクです。');
         }
     }
 
     public function destroy($id)
     {
-        $task = Task::where('id', $id);
-        if($task->use_id == Auth::id()) {
+        $task = Task::find($id);
+        if($task->user_id == Auth::id()) {
             $task->delete();
             return redirect()->route('tasks.index')->with('success', 'タスクを削除しました。');
         } else {
-            return redirect()->route('tasks.index');
+            return redirect()->route('tasks.index')->with('error', '別ユーザーのタスクです。');
         }
     }
 }

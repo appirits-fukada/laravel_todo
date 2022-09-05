@@ -51,6 +51,14 @@
                     {{ __('Log in') }}
                 </x-button>
             </div>
+
+            <!-- register link -->
+            <div class="flex items-center justify-end mt-4">
+                <span class="text-sm text-gray-600 hovertext-gray-900">{{ __("Don't have an accoun?") }}</span>
+                <a class="underline text-blue-400 hovertext-blue-900" href="{{ route('register') }}">
+                    {{ __('Register') }}
+                </a>
+            </div>
         </form>
     </x-auth-card>
 </x-guest-layout>
