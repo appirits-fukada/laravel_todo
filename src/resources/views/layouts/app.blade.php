@@ -25,6 +25,18 @@
                 </div>
             </header>
 
+            <!-- Messages -->
+            @if (session('success'))
+                <div class="alert alert-success text-center pt-4">
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if (session('error'))
+                <div class="alert alert-error text-center pt-4">
+                    {{ session('error') }}
+                </div>
+            @endif
+
             <!-- Page Content -->
             <main>
                 <div class="max-w-7xl mx-auto">
