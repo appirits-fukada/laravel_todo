@@ -16,17 +16,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(2)
-            ->has
-            (
-                Task::factory(30)->state
-                (
-                    function(array $attributes, User $user)
-                    {
-                        return ['user_id' => $user->id];
-                    }
-                )
-            )
-        ->create();
+        User::factory(2)->has(Task::factory(30)->state(function(array $attributes, User $user)
+            {
+                return ['user_id' => $user->id];
+            }))->create();
     }
 }

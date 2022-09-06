@@ -25,15 +25,14 @@ class StoreTask extends FormRequest
     {
         return [
             'title' => 'required|max:255',
-            'content' => 'required|max:255',
+            'content' => 'max:255',
         ];
     }
 
     public function messages()
     {
         return [
-            'title.required' => 'タスク名を入力してください',
-            'content.required' => 'タスク詳細を入力してください'
+            'title.required' => 'タスク名を入力してください'
         ];
     }
 }
