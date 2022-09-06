@@ -16,8 +16,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\TaskController@index');
 Route::resource('tasks', 'App\Http\Controllers\TaskController');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
 require __DIR__.'/auth.php';
