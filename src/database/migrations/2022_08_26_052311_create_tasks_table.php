@@ -15,9 +15,13 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->string('content');
-            $table->timestamps();
+            $table->string('title')->nullable(false);   // タスク名はnullを許容しない
+            $table->text('content')->nullable(true);    // タスク詳細はnullを許容する
+            $table->unsignedBigInteger('user_id');      // 外部キー
+            $table->dateTime('created_at')->nullable();
+            $table->dateTime('updated_at')->nullable();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
